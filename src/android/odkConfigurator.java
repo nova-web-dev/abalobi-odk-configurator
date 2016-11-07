@@ -112,7 +112,7 @@ public class odkConfigurator extends CordovaPlugin {
 
 
 
-            callbackContext.success(createBase64(mapsListFromFile));
+            callbackContext.success(createByteArray(mapsListFromFile));
         } else {
             callbackContext.error("Expected one non-empty string argument.");
         }
@@ -233,6 +233,32 @@ public class odkConfigurator extends CordovaPlugin {
             System.out.println("OTHER EXCEPTION: " + ex);
         }
         return base64String;
+    }
+
+    private static byte[] createByteArray(List<Map<Object, Object>> contents) {
+        String base64String = "";
+//        byte[] byteArrayOfFile = new byte[];
+        try {
+//            FileOutputStream outputStream = new FileOutputStream(fileName);
+            ByteArrayOutputStream byteOut = new ByteArrayOutputStream(9999);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteOut);
+
+            //Run through the maps list
+            for (int i = 0; i < 2; i++) {
+                // printMap(contents.get(i));
+                // System.out.println("\n\n");
+                objectOutputStream.writeObject(contents.get(i));
+            }
+
+            return byteOut.toByteArray();
+
+        } catch (IOException e) {
+            System.out.println("oops...");
+            e.printStackTrace();
+        } catch (Exception ex){
+            System.out.println("OTHER EXCEPTION: " + ex);
+        }
+//        return base64String;
     }
 
     private static List<Map<Object, Object>> setupODK(Object[] currentSettings, String odkUsername, String odkPassword){
