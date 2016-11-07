@@ -56,22 +56,36 @@ public class odkConfigurator extends CordovaPlugin {
         @Override
         public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
                 if (action.equals("coolMethod")) {
-                        String message = args.getString(0);
-                        this.coolMethod(message, callbackContext);
-                        return true;
+                  String message = args.getString(0);
+
+                  String jsUsername = args.getString(0);
+                  String jsPassword = args.getString(1);
+
+                  this.coolMethod(jsUsername, jsPassword, callbackContext);
+                  return true;
                 }
                 return false;
         }
 
-        private void coolMethod(String message, CallbackContext callbackContext) {
+        private void coolMethod(String jsUsername1, String jsPassword1, CallbackContext callbackContext) {
 
-                //Start working
+            //Start working
 
-                if (message != null && message.length() > 0) {
-                        callbackContext.success(message);
-                } else {
-                        callbackContext.error("Expected one non-empty string argument.");
-                }
+
+            if (jsUsername1 != null && jsUsername1.length() > 0) {
+
+
+    
+
+
+
+
+
+
+                callbackContext.success("THIS IS A TEST");
+            } else {
+                callbackContext.error("Expected one non-empty string argument.");
+            }
         }
 
         /*=======================================================================================
