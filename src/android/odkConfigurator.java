@@ -258,6 +258,7 @@ public class odkConfigurator extends CordovaPlugin {
         } catch (Exception ex){
             System.out.println("OTHER EXCEPTION: " + ex);
         }
+        return new byte[10];
 //        return base64String;
     }
 
