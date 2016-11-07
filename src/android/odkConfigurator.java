@@ -334,6 +334,8 @@ public class odkConfigurator extends CordovaPlugin {
 
     private static Object[] stringArrayToObject(Object[] input){
 
+        fileCompareIterator = 0;
+
         int timesToRun = input.length;
         Object[] tempObj = new Object[timesToRun];
 
